@@ -15,7 +15,7 @@
         }
         
         body {
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
             color: #f0f0f0;
             height: 100vh;
             display: flex;
@@ -28,7 +28,6 @@
         
         .container {
             width: 100%;
-            max-width: 100%;
             height: 100%;
             max-height: 100%;
             background: rgba(15, 15, 30, 0.95);
@@ -64,7 +63,7 @@
         h1 {
             font-size: 2.2rem;
             margin-bottom: 8px;
-            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 3px 15px rgba(0, 198, 255, 0.3);
@@ -108,7 +107,7 @@
         
         .status.x-turn {
             background: rgba(0, 198, 255, 0.15);
-            color: #00c6ff;
+            color: #4facfe;
             box-shadow: 0 0 15px rgba(0, 198, 255, 0.3);
         }
         
@@ -146,7 +145,7 @@
         }
         
         .btn-primary {
-            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
             color: white;
         }
         
@@ -189,8 +188,8 @@
         }
         
         .cell.x {
-            color: #00c6ff;
-            text-shadow: 0 0 15px rgba(0, 198, 255, 0.6);
+            color: #4facfe;
+            text-shadow: 0 0 15px rgba(79, 172, 254, 0.6);
         }
         
         .cell.o {
@@ -227,9 +226,9 @@
         }
         
         .mode-btn.active {
-            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
             color: white;
-            box-shadow: 0 4px 15px rgba(0, 198, 255, 0.5);
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.5);
         }
         
         .mode-btn.vs-ai {
@@ -422,7 +421,7 @@
         }
         
         .player-x.active {
-            box-shadow: 0 0 15px rgba(0, 198, 255, 0.6);
+            box-shadow: 0 0 15px rgba(79, 172, 254, 0.6);
         }
         
         .player-o.active {
@@ -435,7 +434,7 @@
         }
         
         .player-x .player-icon {
-            color: #00c6ff;
+            color: #4facfe;
         }
         
         .player-o .player-icon {
@@ -485,6 +484,13 @@
             z-index: 100;
             display: none;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            animation: thinking 1.5s infinite;
+        }
+        
+        @keyframes thinking {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
         }
         
         @media (max-height: 700px) {
@@ -582,7 +588,7 @@
             </div>
             
             <footer>
-                <p>© 2025 Tic Tac Toe Master | Designed by Vastavik Labs</p>
+                <p>© 2025 Tic Tac Toe Master | Designed for VastavikLabs</p>
             </footer>
         </div>
         
@@ -635,7 +641,7 @@
             </div>
             
             <footer>
-                <p>© 2025 Tic Tac Toe Master | Designed by Vastavik Labs</p>
+                <p>© 2025 Tic Tac Toe Master | Your move, champion!</p>
             </footer>
         </div>
         
@@ -645,10 +651,11 @@
                 <div class="ad-header">Advertisement</div>
                 <div class="ad-body">
                     <h3>AdMob Interstitial Ad</h3>
-                    <p>This ad appears only for you</p>
-                    <div style="margin: 15px auto; width: 280px; height: 180px; background: linear-gradient(45deg, #00c6ff, #0072ff); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                    <p>This ad appears only when you tap the Restart button</p>
+                    <div style="margin: 15px auto; width: 280px; height: 180px; background: linear-gradient(45deg, #4facfe, #00f2fe); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
                         Ad Content Here
                     </div>
+                    <p>Close ad to continue playing</p>
                 </div>
                 <div class="ad-footer">
                     <button class="btn btn-primary" id="closeAdBtn">Close Ad</button>
@@ -937,10 +944,8 @@
 
         // Share game with native app support
         function shareGame(platform) {
-            const shareUrl = "https://example.com/tic-tac-toe";
+            const shareUrl = "https://vastaviklabs.com/tic-tac-toe";
             const shareText = "Check out this awesome Tic Tac Toe Master game!";
-            
-            let shareLink = "";
             
             switch(platform) {
                 case 'facebook':
@@ -948,9 +953,7 @@
                     window.location.href = `fb://facewebmodal/f?href=${encodeURIComponent(shareUrl)}`;
                     setTimeout(() => {
                         // Fallback to web if app not installed
-                        if (!document.hidden) {
-                            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`, '_blank');
-                        }
+                        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`, '_blank');
                     }, 500);
                     break;
                     
@@ -959,9 +962,7 @@
                     window.location.href = `whatsapp://send?text=${encodeURIComponent(shareText + " " + shareUrl)}`;
                     setTimeout(() => {
                         // Fallback to web if app not installed
-                        if (!document.hidden) {
-                            window.open(`https://web.whatsapp.com/send?text=${encodeURIComponent(shareText + " " + shareUrl)}`, '_blank');
-                        }
+                        window.open(`https://web.whatsapp.com/send?text=${encodeURIComponent(shareText + " " + shareUrl)}`, '_blank');
                     }, 500);
                     break;
                     
@@ -974,7 +975,7 @@
 
         // Event listeners
         gameBoard.addEventListener('click', handleCellClick);
-        restartBtn.addEventListener('click', showInterstitialAd); // Show ad on restart
+        restartBtn.addEventListener('click', showInterstitialAd);
         backBtn.addEventListener('click', goHome);
         pvpBtn.addEventListener('click', () => startGame('pvp'));
         pvaiBtn.addEventListener('click', () => startGame('pvai'));
@@ -992,6 +993,20 @@
                 e.preventDefault();
             }
         }, { passive: false });
+        
+        // Ensure the game fits perfectly on mobile
+        function adjustLayout() {
+            const container = document.querySelector('.container');
+            if (window.innerHeight < 600) {
+                container.style.borderRadius = '10px';
+            } else {
+                container.style.borderRadius = '20px';
+            }
+        }
+        
+        // Initial layout adjustment
+        adjustLayout();
+        window.addEventListener('resize', adjustLayout);
     </script>
 </body>
 </html>
